@@ -1,0 +1,23 @@
+<div class="card my-5">
+    <div class="card-body">
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">User Type</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usertype of usertypes">
+                    <td>{{ usertype.id }}</td>
+                    <td>{{ usertype.label }}</td>
+                    <td><ul class="text-center list-inline">
+                        <li class="list-inline-item"><a [routerLink]="['/editusertype', usertype.id]" class="btn btn-info">Edit</a></li>
+                        <li class="list-inline-item"><button (click)="deleteUsertype(usertype.id)" class="btn btn-danger">Delete</button></li>
+                    </ul></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
