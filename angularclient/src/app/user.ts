@@ -5,5 +5,5 @@ export class User {
     name: string = '';
     firstname: string = '';
     email: string = '';
-    usertype : Usertype | null = null;
+    userType : Usertype | null = null;
 }

@@ -1,15 +1,17 @@
-<div class="card my-5">
-    <div class="card-body">
+<div class="d-flex justify-content-center align-items-center bgtitle">
+    <p class="text-white">Add/Edit User Type</p>
+</div>
+
+<div class="my-5 d-flex justify-content-center">
+
         <form (ngSubmit)="onSubmit()" #userTypeForm="ngForm">
             <div class="form-group">
-                <label for="label">User Type</label>
                 <input type="text" [(ngModel)]="usertype.label"
-                class="form-control" id="label" name="label" placeholder="Enter your user type"
+                class="" id="label" name="label" placeholder="User Type"
                 required #label="ngModel">
-                <div [hidden]="!label.pristine" class="alert alert-danger">User Type is required</div>
             </div>
             
-            <button type="submit" [disabled]="!userTypeForm.form.valid" class="btn btn-info">Submit</button>
+            <button type="submit" class="btn btnstyle mt-5">Submit</button>
         </form>
-    </div>
+
 </div>

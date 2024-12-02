@@ -18,6 +18,10 @@ export class UserServiceService {
     return this.http.get<User[]>(this.url+'users');
   }
 
+  public findUserById(id: string): Observable<User> {
+    return this.http.get<User>(this.url+`user/${id}`);
+  }
+
   public save(user: User): Observable<void> {
     return this.http.post<void>(this.url+'users', user);
   }

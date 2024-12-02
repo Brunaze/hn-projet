@@ -1,0 +1,23 @@
+.bgtitle {
+    background-color: #708090ff;
+    font-size: 24px; 
+}
+
+.text-white {
+    padding-top: 10px;
+}
+
+.btnadd {
+    background-color: #890e54ff;
+    font-size: 18px;
+    color: white;
+}
+
+.bgtable {
+    background-color: #890e54ff;
+    color: white;
+}
+
+.btnspace {
+    margin-bottom: -15px;
+}

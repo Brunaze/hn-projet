@@ -1,7 +1,14 @@
-<div class="card my-5">
-    <div class="card-body">
+<div class="d-flex justify-content-center align-items-center bgtitle">
+    <p class="text-white">User List</p>
+</div>
+
+<div class="d-flex justify-content-center align-items-center mt-5">
+    <button class="btn btnadd" routerLink="/adduser">Add User</button>
+</div>
+
+<div class="my-5 mx-5">
         <table class="table table-bordered table-striped">
-            <thead class="thead-dark">
+            <thead class="bgtable">
                 <tr>
                     <th scope="col">User Type</th>
                     <th scope="col">Name</th>
@@ -12,16 +19,15 @@
             </thead>
             <tbody>
                 <tr *ngFor="let user of users">
-                    <td><span *ngIf="user.usertype !== null">{{ user.usertype.label }}</span></td>
+                    <td><span *ngIf="user.userType !== null">{{ user.userType.label }}</span></td>
                     <td>{{ user.name }}</td>
                     <td>{{ user.firstname }}</td>
                     <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
                     <td><ul class="text-center list-inline">
-                        <li class="list-inline-item"><a [routerLink]="['/edituser', user.id]" class="btn btn-info">Edit</a></li>
-                        <li class="list-inline-item"><button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button></li>
+                        <li class="list-inline-item"><a [routerLink]="['/edituser', user.id]" class="btn btn-info btnspace">Edit</a></li>
+                        <li class="list-inline-item"><button (click)="deleteUser(user.id)" class="btn btn-danger btnspace">Delete</button></li>
                     </ul></td>
                 </tr>
             </tbody>
         </table>
-    </div>
 </div>

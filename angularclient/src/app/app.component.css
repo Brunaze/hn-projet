@@ -1,0 +1,35 @@
+.bodybgcolor {
+    background-color: rgb(248, 248, 248);
+    height: 100vh;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.bgcolor {
+    background-color: rgb(220, 248, 248);
+}
+
+.navbar-nav {
+    display: flex;            
+    justify-content: flex-start;  
+    align-items: center;      
+    width: 100%;
+}
+
+.navbar-nav .nav-item .nav-link {
+    font-size: 18px;
+    padding: 10px 20px;
+}
+
+.navbar-nav .nav-item {
+    border-top: 3px solid transparent;
+    display: flex;            
+    flex: 0.15;                  
+    justify-content: center;  
+    text-align: center;       
+}
+
+.navbar-nav .nav-item.active {
+    border-top: 3px solid #890e54ff;
+    background-color: rgb(204, 220, 236);
+}   

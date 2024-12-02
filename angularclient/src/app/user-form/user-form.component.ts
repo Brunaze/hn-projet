@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 export class UserFormComponent implements OnInit {
 
   user: User;
-  usertypes: Usertype[] = [];
+  userTypes: Usertype[] = [];
   id: string | null = null;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserServiceService, private userTypeService: UserTypeServiceService) {
@@ -32,8 +32,21 @@ export class UserFormComponent implements OnInit {
       }
     })
     this.userTypeService.findAllUserType().subscribe( (data: Usertype[]) => {
-      this.usertypes = data;
+      this.userTypes = data;
+
+      if (!!this.id) {
+        this.userService.findUserById(this.id).subscribe( user => {
+          this.user = user;
+          
+          this.user.userType = this.userTypes.find(
+            (type) => type.id === this.user.userType?.id
+          ) || null;
+        })
+      }
+      
     })
+
+    
   }
 
   onSubmit() {
