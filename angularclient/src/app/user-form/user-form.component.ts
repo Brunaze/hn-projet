@@ -43,10 +43,8 @@ export class UserFormComponent implements OnInit {
           ) || null;
         })
       }
-      
     })
 
-    
   }
 
   onSubmit() {
