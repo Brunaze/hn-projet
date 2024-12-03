@@ -1,5 +1,6 @@
 package com.hnservice.projethn.service;
 
+import com.hnservice.projethn.Entity.User;
 import com.hnservice.projethn.Entity.UserType;
 import com.hnservice.projethn.Repository.UserTypeRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -26,6 +27,11 @@ public class UserTypeServiceImpl implements UserTypeService {
     @Override
     public List<UserType> findAll() {
         return userTypeRepository.findAll();
+    }
+
+    @Override
+    public UserType getUserTypeById(int id) {
+        return userTypeRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Id non valide"));
     }
 
     @Override

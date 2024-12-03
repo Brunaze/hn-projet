@@ -34,6 +34,11 @@ public class MainController {
         return userService.findAll();
     }
 
+    @GetMapping("/user/{id}")
+    public @ResponseBody User getUserById(@PathVariable int id){
+        return userService.getUserById(id);
+    }
+
     @PostMapping("/users")
     void addUser(@RequestBody User user){
         userService.addUser(user);
@@ -54,6 +59,11 @@ public class MainController {
     @GetMapping("/usertypes")
     public @ResponseBody List<UserType> getAllUserTypes(){
         return userTypeService.findAll();
+    }
+
+    @GetMapping("/usertype/{id}")
+    public @ResponseBody UserType getUserTypeById(@PathVariable int id){
+        return userTypeService.getUserTypeById(id);
     }
 
     @PostMapping("/usertypes")

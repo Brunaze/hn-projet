@@ -16,9 +16,9 @@ public class UserType {
     @Column(name = "user_type")
     private String label;
 
+    @Transient
     @OneToMany(mappedBy = "userType",
-                cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                        CascadeType.DETACH, CascadeType.REFRESH})
+                cascade = {CascadeType.DETACH})
     private List<User> users;
 
     public UserType() {

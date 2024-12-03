@@ -18,6 +18,10 @@ export class UserTypeServiceService {
     return this.http.get<Usertype[]>(this.url+'usertypes');
   }
 
+  public findUserTypeById(id: string): Observable<Usertype> {
+    return this.http.get<Usertype>(this.url+`usertype/${id}`);
+  }
+
   public save(usertype: Usertype): Observable<void> {
     return this.http.post<void>(this.url+'usertypes', usertype, {responseType: 'text' as 'json'});
   }

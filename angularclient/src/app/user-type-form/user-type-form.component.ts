@@ -23,10 +23,14 @@ export class UserTypeFormComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe( params => {
       this.id = params.get('id');
-      if (!!this.id) {
-        this.usertype.id = this.id;
-      }
     })
+    if (!!this.id) {
+      this.usertype.id = this.id;
+      this.userTypeService.findUserTypeById(this.id).subscribe( usertype => {
+        this.usertype = usertype;
+
+      })
+    }
   }
 
   onSubmit() {

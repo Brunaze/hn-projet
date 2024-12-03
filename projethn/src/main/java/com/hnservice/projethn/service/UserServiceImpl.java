@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User getUserById(int id) {
+        return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Id non valide"));
+    }
+
+    @Override
     public void updateUser(User user) {
         User userBefore = userRepository.findById(user.getId()).orElseThrow(() -> new EntityNotFoundException("Id non valide"));
         user.setId(userBefore.getId());

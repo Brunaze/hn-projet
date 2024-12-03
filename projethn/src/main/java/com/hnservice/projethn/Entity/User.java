@@ -1,6 +1,8 @@
 package com.hnservice.projethn.Entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name="User")
@@ -18,18 +20,19 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                        CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "usertype")
+    @ManyToOne
+    @JoinColumn(name = "usertype", nullable = true)
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private UserType userType;
 
     public User() {
     }
 
-    public User(String name, String firstname, String email) {
+    public User(String name, String firstname, String email, UserType userType) {
         this.name = name;
         this.firstname = firstname;
         this.email = email;
+        this.userType = userType;
     }
 
     public int getId() {
