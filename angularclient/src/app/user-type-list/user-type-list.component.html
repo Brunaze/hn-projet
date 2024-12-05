@@ -11,8 +11,22 @@
         <table class="table table-bordered table-striped">
             <thead class="bgtable">
                 <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">User Type</th>
+                    <th (click)="sort('id')" scope="col" [class.sorted-asc]="currentSort.field === 'id' && currentSort.direction === 'asc'" 
+                    [class.sorted-desc]="currentSort.field === 'id' && currentSort.direction === 'desc'">
+                        Id
+                        <span class="sort-arrow" *ngIf="currentSort.field === 'id'">
+                            <i *ngIf="currentSort.direction === 'asc'" class="arrow-up">↑</i>
+                            <i *ngIf="currentSort.direction === 'desc'" class="arrow-down">↓</i>
+                        </span>
+                    </th>
+                    <th (click)="sort('label')" scope="col" [class.sorted-asc]="currentSort.field === 'label' && currentSort.direction === 'asc'" 
+                    [class.sorted-desc]="currentSort.field === 'label' && currentSort.direction === 'desc'">
+                        User Type
+                        <span class="sort-arrow" *ngIf="currentSort.field === 'label'">
+                            <i *ngIf="currentSort.direction === 'asc'" class="arrow-up">↑</i>
+                            <i *ngIf="currentSort.direction === 'desc'" class="arrow-down">↓</i>
+                        </span>
+                    </th>
                     <th scope="col"></th>
                 </tr>
             </thead>

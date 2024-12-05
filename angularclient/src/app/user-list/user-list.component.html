@@ -10,10 +10,38 @@
         <table class="table table-bordered table-striped">
             <thead class="bgtable">
                 <tr>
-                    <th scope="col">User Type</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Email</th>
+                    <th (click)="sort('userType')" scope="col" [class.sorted-asc]="currentSort.field === 'userType' && currentSort.direction === 'asc'" 
+                    [class.sorted-desc]="currentSort.field === 'userType' && currentSort.direction === 'desc'">
+                        User Type
+                        <span class="sort-arrow" *ngIf="currentSort.field === 'userType'">
+                            <i *ngIf="currentSort.direction === 'asc'" class="arrow-up">↑</i>
+                            <i *ngIf="currentSort.direction === 'desc'" class="arrow-down">↓</i>
+                        </span>
+                    </th>
+                    <th (click)="sort('name')" scope="col" [class.sorted-asc]="currentSort.field === 'name' && currentSort.direction === 'asc'" 
+                    [class.sorted-desc]="currentSort.field === 'name' && currentSort.direction === 'desc'">
+                        Name
+                        <span class="sort-arrow" *ngIf="currentSort.field === 'name'">
+                            <i *ngIf="currentSort.direction === 'asc'" class="arrow-up">↑</i>
+                            <i *ngIf="currentSort.direction === 'desc'" class="arrow-down">↓</i>
+                        </span>
+                    </th>
+                    <th (click)="sort('firstname')"scope="col" [class.sorted-asc]="currentSort.field === 'firstname' && currentSort.direction === 'asc'" 
+                    [class.sorted-desc]="currentSort.field === 'firstname' && currentSort.direction === 'desc'">
+                        First Name
+                        <span class="sort-arrow" *ngIf="currentSort.field === 'firstname'">
+                            <i *ngIf="currentSort.direction === 'asc'" class="arrow-up">↑</i>
+                            <i *ngIf="currentSort.direction === 'desc'" class="arrow-down">↓</i>
+                        </span>
+                    </th>
+                    <th (click)="sort('email')" scope="col" [class.sorted-asc]="currentSort.field === 'email' && currentSort.direction === 'asc'" 
+                    [class.sorted-desc]="currentSort.field === 'email' && currentSort.direction === 'desc'">
+                        Email
+                        <span class="sort-arrow" *ngIf="currentSort.field === 'email'">
+                            <i *ngIf="currentSort.direction === 'asc'" class="arrow-up">↑</i>
+                            <i *ngIf="currentSort.direction === 'desc'" class="arrow-down">↓</i>
+                        </span>
+                    </th>
                     <th scope="col"></th>
                 </tr>
             </thead>

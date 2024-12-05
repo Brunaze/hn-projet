@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 export class UserTypeListComponent implements OnInit{
 
   usertypes: Usertype[] = [];
+  currentSort: { field: string, direction: string } = { field: '', direction: 'asc' };
 
   constructor(private userTypeService: UserTypeServiceService) {}
 
@@ -29,6 +30,31 @@ export class UserTypeListComponent implements OnInit{
         this.usertypes = this.usertypes.filter(usertype => usertype.id !== id);
       }
     })
+  }
+
+  sort(field: string) {
+    const direction = this.currentSort.field === field && this.currentSort.direction === 'asc' ? 'desc' : 'asc';
+    this.currentSort = { field, direction };
+
+    this.usertypes.sort((a, b) => {
+      let valueA = a[field];
+      let valueB = b[field];
+  
+      if (field === 'id') {
+        valueA = Number(valueA);
+        valueB = Number(valueB);
+      } else if (field === 'label') {
+        valueA = valueA.toLowerCase ? valueA.toLowerCase() : valueA;
+        valueB = valueB.toLowerCase ? valueB.toLowerCase() : valueB;
+      }
+  
+      if (valueA < valueB) {
+        return this.currentSort.direction === 'asc' ? -1 : 1;
+      } else if (valueA > valueB) {
+        return this.currentSort.direction === 'asc' ? 1 : -1;
+      }
+      return 0;
+    });
   }
 
 }

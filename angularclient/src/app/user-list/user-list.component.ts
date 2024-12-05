@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 export class UserListComponent implements OnInit {
 
   users: User[] = [];
+  currentSort: { field: string, direction: string } = { field: '', direction: 'asc' };
 
   constructor(private userService: UserServiceService) {}
 
@@ -28,6 +29,41 @@ export class UserListComponent implements OnInit {
       next: () => {
         this.users = this.users.filter(user => user.id !== id);
       }
+    });
+  }
+
+  sort(field: string) {
+    const direction = this.currentSort.field === field && this.currentSort.direction === 'asc' ? 'desc' : 'asc';
+    this.currentSort = { field, direction };
+
+    this.users.sort((a, b) => {
+      let valueA = a[field];
+      let valueB = b[field];
+
+      if (valueA === null && valueB === null) {
+        return 0;
+      }
+      if (valueA === null) {
+        return this.currentSort.direction === 'asc' ? -1 : 1;
+      }
+      if (valueB === null) {
+        return this.currentSort.direction === 'asc' ? 1 : -1; //
+      }
+  
+      if (field === 'userType') {
+        valueA = a[field]?.label.toLowerCase();
+        valueB = b[field]?.label.toLowerCase();
+      } else {
+        valueA = valueA.toLowerCase ? valueA.toLowerCase() : valueA;
+        valueB = valueB.toLowerCase ? valueB.toLowerCase() : valueB;
+      }
+  
+      if (valueA < valueB) {
+        return this.currentSort.direction === 'asc' ? -1 : 1;
+      } else if (valueA > valueB) {
+        return this.currentSort.direction === 'asc' ? 1 : -1;
+      }
+      return 0;
     });
   }
 }

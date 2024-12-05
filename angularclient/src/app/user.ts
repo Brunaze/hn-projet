@@ -6,4 +6,6 @@ export class User {
     firstname: string = '';
     email: string = '';
     userType : Usertype | null = null;
+
+    [key: string]: any;
 }

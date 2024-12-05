@@ -1,1 +1,1 @@
-FROM maven:4.0-jdk-23
+FROM maven:3.9.9-eclipse-temurin-23
